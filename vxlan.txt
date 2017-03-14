@@ -1,0 +1,154 @@
+vxlan : RFC 7348 https://tools.ietf.org/html/rfc7348
+VXLAN related blogs: 
+Awesome blogs @ http://www.therandomsecurityguy.com/
+start by video: https://www.youtube.com/watch?v=Jqm_4TMmQz8
+http://networkstatic.net/setting-overlays-open-vswitch/
+Nice explanation on http://www.therandomsecurityguy.com/vxlan/
+CISCO blog VXLAN series: http://blogs.cisco.com/datacenter/digging-deeper-into-vxlan
+VmWare blog VxLAN series: http://blogs.vmware.com/vsphere/2013/04/vxlan-series-different-components-part-1.html
+ 
+Overlay Networks:
+Two key traits of overlay networks:
+    -It encapsulates original packets into a new header. For example, IPSec VPN, an overlay technology, encapsulates original IP frame in another IP header.
+    - Communication is typically established between two tunnel end points. For example, in an IPSec based VPN, which runs on the public internet, the tunnels are established between two sites.
+- As the name VXLANs (Virtual eXtensible LANs) implies, the technology is meant to provide the same services to connected Ethernet end systems that VLANs do today, but in a more extensible manner.  Compared to VLANs, VXLANs are extensible with regard to scale, and extensible with regard to the reach of their deployment.
+    
+-A Virtual Tunnel Endpoint (VTEP) is present at each vShpere host (or simple a server on which multiple VMs will be spawned)
+VTEP do the encapsulation and decapsulation of packets.
+For this they need to know about the remote VMs MAC and the IP of the VTEP the remote vm is associated with.
+This mac mapping is figured out through multicast messages. Exactly HOW ? I don't know. read about IGMP, and PIM.
+Some basic idea is : Hosts send an IGMP report message for a particular multicast address. the switch adds that port to that multicast group and when a multicast message is received, the switch forwards them through those ports.
+Hence, "Multicast protocol support is required in the physical network for VXLAN to work."
+
+"In VXLAN all the learning about the virtual machine MAC address and its association with VTEP IP is performed through the support of physical network. One of the protocols utilized in the physical network is IP multicast. VXLAN makes use of this IP multicast protocol to populate the forwarding tables in the VTEP."
+
+
+OVS : https://www.youtube.com/watch?v=rYW7kQRyUvA
+ovs-vsctl add-br mybridge
+ovs-vsctl show
+ifconfig mybridge up
+ifconfig 
+ovs-vsctl del-br mybridge
+ovs-vsctl add-port mybridge eth0
+ovs-vsctl show
+ping google.com/  # Lost connectivity to the internet. why?
+ifconfig eth0 0 
+dhclient mybridge 
+ifconfig
+route -n
+ping google.com # Now ping should work
+ip tuntap add mode tap vport1
+ip tuntap add mode tap vport2
+ifconfig vport1 up
+ifconfig vport2 up
+ovs-vsctl add-port mybridge vport1 --add-port mybridge vport2
+ovs-vsctl show
+#start two VMs and connect each with a vport just created
+ovs-appctl fdb/show mybridge
+ovs-ofctl show mybridge
+ovs-ofctl dump-flows mybridge
+ovs-vsctl list Bridge
+ovs-vsctl list Port
+ovs-vsctl list Interface
+
+OpenFlow entries in OVS https://www.youtube.com/watch?v=FyV4MoQ3T0I
+ovs-ofctl show s1 # shows interface - OpenFlow port mappings
+ovs-ofctl add-flow s1 action=normal # behave like a normal L2 switch
+ovs-ofctl del-flows s1
+ovs-ofctl add-flow s1 priority=500,in_port=1,actions=output:2
+ovs-ofctl add-flow s1 priority=500,dl_type=0x0800,nw_dst=10.0.0.2,actions=output:4
+#L2 matching:
+ovs-ofctl add-flow s1 dl_src=<MAC1>,dl_dst=<MAC2>,actions=output:<OPENFLOW_PORT_NO>
+
+dl_type, nw_proto values and keywords (from ovs-ofctl MAN page):
+
+arp:    dl_type=0x0806 (nw_proto=1 for requests,nw_proto=2 for replies)
+rarp:   dl_type=0x8035
+
+ip:     dl_type=0x0800
+icmp:   dl_type=0x0800, nw_proto=1
+tcp:    dl_type=0x0800, nw_proto=6
+udp:    dl_type=0x0800, nw_proto=17
+
+ipv6:   dl_type=0x86dd
+tcp6:   dl_type=0x86dd, nw_proto=6
+udp6:   dl_type=0x86dd, nw_proto=17
+icmp6:  dl_type=0x86dd, nw_proto=58
+
+NOTE: When specifying a higher layer match field, the lower layer protocols must be specified.
+
+mininet: https://www.youtube.com/watch?v=jmlgXaocwiE
+
+sudo mn
+nodes
+help
+pingall
+dump
+net
+iperf
+sudo mn -c  # Clean-up
+sudo mn --link tc,bw=10,delay=10ms
+# prepend a command with 'sh' if you want it to be run from system shell and not mininet prompt
+
+Custom Topologies: https://www.youtube.com/watch?v=yHUNeyaQKWY
+
+
+VXLAN overlay networks with Open vSwitch: https://www.youtube.com/watch?v=tnSkHhsLqpM
+
+Tunnel creation:
+ovs-vsctl add-port s1 vtep_name --set interface vtep_name type=vxlan option:remote_ip=192.168.2.20 option:key=flow ofport_request=10
+
+ovs-ofctl add-flows s2 table=0,in_port=1,actions=set_field:100->tun_id,resubmit(,1)
+table=1,tun_id=100,dl_dst=00:00:00:00:00:01,actions=output:1
+table=1,tun_id=100,arp,nw_dst=10.0.0.1,actions=output:1
+
+Linux network namespaces:
+https://www.youtube.com/watch?v=_WgUwUf1d34
+   14  ip netns add green
+   15  ip netns add red
+   16  ip netns
+   17  ls /var/run/netns/
+   18  ip netns del green
+   19  ls /var/run/netns/
+   20  ip netns add green
+   21  ls /var/run/netns/
+   22  ip netns exec red ip link
+   23  ip netns exec green ip link
+   24  ip link
+   25  ovs-vsctl add-br OVS1
+   26  ip link
+   27  ovs-vsctl show
+   28  ip link add eth0-r type veth peer name veth-r
+   29  ip link
+   30  ip link show
+   31  ip link
+   32  ip link set eth0-r netns red
+   33  ip link
+   34  ip netns exec red ip link
+   35  ovs-vsctl add-port OVS1 veth-r
+   36  ip link
+   37  ovs-vsctl show
+   38  ip link add eth0-g type veth peer name veth-g
+   39  ip link set eth0-g netns green
+   40  ovs-vsctl add-port OVS1 veth-g
+   41  ovs-vsctl show
+   42  ip link
+   43  ip link set veth-r up
+   44  ip link
+   45  ip netns exec red ip link set dev lo up
+   46  ip netns exec green ip link set dev lo up
+   47  ip netns exec red ip link
+   48  ip netns exec red ip link set dev eth0-r up
+   49  ip netns exec green ip link set dev eth0-r up
+   50  ip netns exec green ip link set dev eth0-g up
+   51  ip netns exec red ip address
+   52  ip netns exec red ip address add 10.0.0.1/24 dev eth0-r
+   53  ip netns exec green ip address add 10.0.0.2/24 dev eth0-g
+   54  ip netns exec red ip address
+   55  ip netns exec red ip route
+   56  route
+
+   58  ip link set dev veth-g up
+   59  ip link set dev veth-r up
+   60  ip netns exec red bash
+   61  ifconfig
