@@ -5,7 +5,7 @@
     - [StringBuilder](#stringbuilder)
     - [StringBuffer](#stringbuffer)
     - [Difference](#difference)
-  - [Interface & Abstract class](#interface-&-abstract-class)
+  - [Interface & Abstract class](#interface-and-abstract-class)
     - [Interface](#interface)
     - [Abstract Class](#abstract-class)
     - [Interface vs Abstract class](#interface-vs-abstract-class)
@@ -51,7 +51,7 @@
   - Performance: String - Fast, StringBuilder - Fast, StringBuffer - Slow
 
 
-## Interface & Abstract class
+## Interface and Abstract class
 #### Interface  
   - A superclass defines common behavior for related subclasses. An interface can be used to define common behavior for classes (including unrelated classes).
   - Interface defines a sort of contract.
