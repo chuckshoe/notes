@@ -1,6 +1,6 @@
 # JAVA notes:
 # TOPICS
-  - [String, StringBuilder, StringBuffer](#string\,-stringbuilder\,-stringbuffer)
+  - [String, StringBuilder, StringBuffer](#string%2c-stringbuilder%2c-stringbuffer)
     - [String](#string)
     - [StringBuilder](#stringbuilder)
     - [StringBuffer](#stringbuffer)
