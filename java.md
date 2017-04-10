@@ -117,3 +117,8 @@ relationship that clearly describes a parent-child relationship should be modele
 A weak is-a relationship, also known as an is-kind-of relationship, indicates that an object possesses a certain property. A weak is-a relationship can
 be modeled using interfaces.
   - ***NOTE:*** Generally , interfaces preferred over abstract class. One reason being, we can implement multiple interfaces; so interfaces more flexible.
+  - ***LINKS:***  
+
+  http://stackoverflow.com/questions/761194/interface-vs-abstract-class-general-oo  
+  
+  http://stackoverflow.com/questions/4126938/what-is-the-difference-between-an-interface-and-an-abstract-class?noredirect=1&lq=1
