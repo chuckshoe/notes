@@ -1,6 +1,6 @@
 # JAVA notes:
 # TOPICS
-  - [String, StringBuilder, StringBuffer](#string%2c-stringbuilder%2c-stringbuffer)
+  - [String, StringBuilder, StringBuffer](#string-stringbuilder-stringbuffer)
     - [String](#string)
     - [StringBuilder](#stringbuilder)
     - [StringBuffer](#stringbuffer)
@@ -10,7 +10,7 @@
     - [Abstract Class](#abstract-class)
     - [Interface vs Abstract class](#interface-vs-abstract-class)
 
-## String, StringBuilder, StringBuffer
+## String StringBuilder StringBuffer
 #### String
   - String is immutable ( once created can not be changed )object.
   - The object created as a String is stored in the Constant String Pool .
