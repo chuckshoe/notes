@@ -11,6 +11,8 @@
   - Interface defines a sort of contract.
   - you can implement multiple interfaces
   - have to implement every method in the Interface
+  - An interface is a class-like construct that contains only constants and abstract methods.
+  - As with an abstract class, you cannot create an instance from an interface using the new operator.
 
 #### Abstract class
   - a class can implement only one abstract class
