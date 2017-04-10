@@ -1,9 +1,9 @@
 # JAVA notes:
 # TOPICS
-  - [String, StringBuilder, StringBuffer](string-stringBuilder-stringBuffer)
+  - [String, StringBuilder, StringBuffer](string,-stringbuilder,-stringbuffer)
     - [String](#string)
-    - [StringBuilder](#StringBuilder)
-    - [StringBuffer](#StringBuffer)
+    - [StringBuilder](#stringsuilder)
+    - [StringBuffer](#stringbuffer)
     - [Difference](#difference)
   - [Interface & Abstract class](#interface-&-abstract-class)
     - [Interface](#interface)
