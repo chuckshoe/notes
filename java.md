@@ -1,6 +1,6 @@
 # JAVA notes:
 # TOPICS
-  - [Interface & Abstract class](#interface-vs-abstract-class)
+  - [Interface & Abstract class](#interface-&-abstract-class)
     - [Interface](#interface)
     - [Abstract Class](#abstract-class)
     - [Interface vs Abstract class](#interface-vs-abstract-class)
