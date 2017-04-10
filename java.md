@@ -44,7 +44,7 @@
 
   demo1=new StringBuffer(”Bye”); // Above statement is right as it modifies the value which is allowed in the StringBuffer
   ```
-### Difference
+#### Difference
   - Storage Area: String - Constant String Pool, StringBuilder - , StringBuffer -
   - Modifiable: String - No (immutable), StringBuilder - Yes( mutable, StringBuffer - Yes( mutable)
   - Thread Safe: String - No, StringBuilder - No, StringBuffer - Yes
