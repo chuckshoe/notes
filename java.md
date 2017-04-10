@@ -1,8 +1,8 @@
 # JAVA notes:
 # TOPICS
-  - [String, StringBuilder, StringBuffer](string,-stringbuilder,-stringbuffer)
+  - [String, StringBuilder, StringBuffer](string\,-stringbuilder\,-stringbuffer)
     - [String](#string)
-    - [StringBuilder](#stringsuilder)
+    - [StringBuilder](#stringbuilder)
     - [StringBuffer](#stringbuffer)
     - [Difference](#difference)
   - [Interface & Abstract class](#interface-&-abstract-class)
