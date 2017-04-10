@@ -120,5 +120,9 @@ be modeled using interfaces.
   - ***LINKS:***  
 
   http://stackoverflow.com/questions/761194/interface-vs-abstract-class-general-oo  
-  
-  http://stackoverflow.com/questions/4126938/what-is-the-difference-between-an-interface-and-an-abstract-class?noredirect=1&lq=1
+
+  http://stackoverflow.com/questions/4126938/what-is-the-difference-between-an-interface-and-an-abstract-class?noredirect=1&lq=1  
+
+  http://stackoverflow.com/questions/13367500/java-abstract-methods  
+
+  http://stackoverflow.com/questions/6020649/abstract-methods-in-java
