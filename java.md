@@ -9,6 +9,9 @@
     - [Interface](#interface)
     - [Abstract Class](#abstract-class)
     - [Interface vs Abstract class](#interface-vs-abstract-class)
+  - [Bitwise Right Shift](#bitwise-right-shift)
+    - [Signed](#signed)
+    - [Unsigned](#unsigned)    
 
 ## String StringBuilder StringBuffer
 #### String
@@ -126,3 +129,54 @@ be modeled using interfaces.
   http://stackoverflow.com/questions/13367500/java-abstract-methods  
 
   http://stackoverflow.com/questions/6020649/abstract-methods-in-java
+  
+  
+
+## Bitwise Right Shift 
+#### Signed 
+  -  In Java, the operator ‘>>’ is signed right shift operator. All integers are signed in Java, and it is fine to use >> for negative numbers. 
+  - The operator ‘>>’ uses the sign bit (left most bit) to fill the trailing positions after shift. If the number is negative, then 1 is used as a filler and if the number is positive, then 0 is used as a filler. 
+  - For example, if binary representation of number is 10….100, then right shifting it by 2 using >> will make it 11…….1.
+
+  ```
+  class Test {
+    public static void main(String args[])  {
+       int x = -4;
+       System.out.println(x>>1);   
+       int y = 4;
+       System.out.println(y>>1);   
+    }    
+  }
+  ```
+  OUTPUT:
+  ```
+  -2
+  2
+  ```
+
+#### Unsigned
+  - In Java, the operator ‘>>>’ is unsigned right shift operator. 
+  - It always fills 0 irrespective of the sign of the number.
+  
+  ```
+  class Test {
+    public static void main(String args[])  {
+ 
+       // x is stored using 32 bit 2's complement form. 
+       // Binary representation of -1 is all 1s (111..1)       
+       int x = -1;  
+ 
+       System.out.println(x>>>29);  // The value of 'x>>>29' is 00...0111
+       System.out.println(x>>>30);  // The value of 'x>>>30' is 00...0011 
+       System.out.println(x>>>31);  // The value of 'x>>>31' is 00...0001 
+   }    
+  } 
+  ```
+  OUTPUT:
+  ```
+  7
+  3
+  1
+  ```
+ 
+
