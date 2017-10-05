@@ -3,6 +3,7 @@
 ## INDEX
 
 * [Systems](#systems)
+* [Database](#database)
 
 ## Systems
 - [5 min intro to Pub/Sub](https://medium.com/salesforce-engineering/the-architecture-files-ep-3-ok-event-log-56ab8060c546)
@@ -12,3 +13,6 @@
 - [Sharding in Hibernate](https://sleeplessinslc.blogspot.in/2008/09/hibernate-shards-maven-simple-example.html)
 -[Memcached vs Redis](https://stackoverflow.com/questions/10558465/memcached-vs-redis)
 - [Ditributed HashTable](https://stackoverflow.com/questions/144360/simple-basic-explanation-of-a-distributed-hash-table-dht)
+
+## Database
+- [Normalization](http://www.studytonight.com/dbms/database-normalization.php)
