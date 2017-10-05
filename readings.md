@@ -13,6 +13,7 @@
 - [Sharding in Hibernate](https://sleeplessinslc.blogspot.in/2008/09/hibernate-shards-maven-simple-example.html)
 -[Memcached vs Redis](https://stackoverflow.com/questions/10558465/memcached-vs-redis)
 - [Ditributed HashTable](https://stackoverflow.com/questions/144360/simple-basic-explanation-of-a-distributed-hash-table-dht)
+- [Sharding Pinterest: How we scaled our MySQL fleet](https://medium.com/@Pinterest_Engineering/sharding-pinterest-how-we-scaled-our-mysql-fleet-3f341e96ca6f)
 
 ## Database
 - [Normalization](http://www.studytonight.com/dbms/database-normalization.php)
