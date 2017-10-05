@@ -10,3 +10,5 @@
 - [The Crystal Shard: How Salesforce Scales](https://medium.com/salesforce-engineering/the-architecture-files-ep-2-the-crystal-shard-a6025bd9f968)
 - [Consistent Hashing](http://www.tom-e-white.com/2007/11/consistent-hashing.html)
 - [Sharding in Hibernate](https://sleeplessinslc.blogspot.in/2008/09/hibernate-shards-maven-simple-example.html)
+-[Memcached vs Redis](https://stackoverflow.com/questions/10558465/memcached-vs-redis)
+- [Ditributed HashTable](https://stackoverflow.com/questions/144360/simple-basic-explanation-of-a-distributed-hash-table-dht)
